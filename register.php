@@ -1,14 +1,54 @@
-<?php include("includes/header.php") ?>
-<?php include("includes/navbar.php") ?>
+<?php include("includes/header.php"); ?>
+<?php include("includes/navbar.php"); ?>
 
-<div class="container-fluid">
-    <div class="jumbotron">
-        
-    <h1>Register</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.”</p>
-    <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.”</div>
-    
-    
-</div>
-</div>
-<?php include("includes/footer.php") ?>
+<main class="login-form">
+    <div class="cotainer">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header bg-warning">
+                        <h3>Register</h3>
+                    </div>
+                    <div class="card-body">
+                        <form id="register-form" method="post" role="form">
+                            <div class="form-group">
+                                <input type="text" name="first_name" id="first_name" tabindex="1" class="form-control"
+                                    placeholder="First Name" value="" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="last_name" id="last_name" tabindex="1" class="form-control"
+                                    placeholder="Last Name" value="" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="username" id="username" tabindex="1" class="form-control"
+                                    placeholder="Username" value="" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" name="email" id="register_email" tabindex="1" class="form-control"
+                                    placeholder="Email Address" value="" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" name="password" id="password" tabindex="2" class="form-control"
+                                    placeholder="Password" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" name="confirm_password" id="confirm-password" tabindex="2"
+                                    class="form-control" placeholder="Confirm Password" required>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-sm-6 col-sm-offset-3">
+                                        <input type="submit" name="register-submit" id="register-submit" tabindex="4"
+                                            class="form-control btn btn-register " value="Register Now">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+<?php include("includes/footer.php")?>

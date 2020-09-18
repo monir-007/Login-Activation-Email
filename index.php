@@ -3,12 +3,12 @@
 
 <div class="container-fluid">
     <div class="jumbotron">
-        
-    
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.”</p>
-    <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.”</div>
-    
-    
+        <h1>Home Page</h1>
+
+
+
+
+    </div>
 </div>
-</div>
+
 <?php include("includes/footer.php"); ?>

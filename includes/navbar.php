@@ -38,7 +38,7 @@
             <!-- <li class="nav-item ">
                 <a href="#" class="nav-link"><i class="fas fa-sign-in-alt"></i> Login</a>
             </li> -->
-            <li class="nav-item ">
+            <li class="nav-item">
                 <a href="#" class="nav-link"><i class="fas fa-sign-out-alt"></i>Logout</a>
             </li>
         </ul>
