@@ -6,10 +6,6 @@
         <h1>Home Page</h1>
       <div><?php display_message();?></div> 
 
-
-
-
-
     </div>
 </div>
 
