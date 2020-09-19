@@ -2,7 +2,10 @@
 
 $con = mysqli_connect('localhost', 'root', '', 'log_db');
 
+
 function row_count($result){
+
+
     return mysqli_num_rows($result);
 }
 
@@ -13,25 +16,22 @@ function escape($string){
 }
 
 function query($query){
-
     global $con;
     return mysqli_query($con, $query);
-
 }
 
 function confirm($result){
     global $con;
-    
-    if(!$result){
-        die("QUERY FAILED". mysqli_error($con));
-    }
 
+    if(!$result){
+        die("QUERY FAILED " . mysqli_error($con));
+    }
 }
 
 function fetch_array($result){
     global $con;
-    mysqli_fetch_array($result);
+
+    return mysqli_fetch_array($result);
 }
 
-/*********************** Validation functions******************** */
 ?>

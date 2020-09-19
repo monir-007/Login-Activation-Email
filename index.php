@@ -4,6 +4,8 @@
 <div class="container-fluid">
     <div class="jumbotron">
         <h1>Home Page</h1>
+      <h4><?php display_message();?></h4> 
+
 
 
 
