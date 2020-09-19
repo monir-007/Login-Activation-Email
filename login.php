@@ -3,6 +3,17 @@
 
 <main class="login-form">
     <div class="cotainer">
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+
+        <?php display_message();?>
+        <?php validate_user_login();?>
+        
+
+        </div>
+    </div>
+        
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
@@ -10,7 +21,7 @@
                         <h3>Login</h3>
                     </div>
                     <div class="card-body">
-                        <form action="" method="">
+                        <form action="" method="post" id="login-form" role="form">
                             <div class="form-group row">
                                 <label for="email_address" class="col-md-4 col-form-label text-md-right">E-Mail
                                 </label>
@@ -38,7 +49,7 @@
                             </div>
 
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-info">
+                                <button type="submit" class="btn btn-info" name="login-submit" id="login-submit" tabindex="4">
                                     Enter
                                 </button>
                                 <a href="#" class="btn btn-link text-primary">

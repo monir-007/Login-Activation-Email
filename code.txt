@@ -1,0 +1,2 @@
+http://localhost/Login-Activation-Email/activate.php?email=monir@gmail.com&code=8a4f22e0136fee1a81d5d291b5ddb12d
+

@@ -4,10 +4,7 @@
 <div class="container-fluid bg-info">
     <div class="jumbotron">
         <h1>Activate</h1>
-    
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.”</p>
-    <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.”</div>
-    
+        <h2 class="text-center"><?php activate_user(); ?></h2>
     
 </div>
 </div>

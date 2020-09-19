@@ -70,6 +70,9 @@ function username_exists($userName){
     return false;
 }
 
+function send_email($email, $subject, $msg, $header){
+    return mail($email, $subject, $msg, $header);
+}
 
 
 // <!-- Validation Functions -->
@@ -129,10 +132,10 @@ function validate_user_registration(){
         }else{
             if(register_user($first_Name, $last_Name, $userName, $email, $password )){
 
-                set_message("<p class='text-center bg-info'>please check your email for activate</p>");
+                set_message("<h4 class='alert alert-info text-center'>please check your email for activate</h4>");
                 redirect("index.php");
             }else{
-                set_message("<p class='text-center bg-info'>Sorry, we could not find you.</p>");
+                set_message("<h4 class='alert alert-info text-center '>Sorry, we could not find you.</h4>");
                 redirect("index.php");
             }
         }
@@ -157,10 +160,14 @@ function register_user($first_Name, $last_Name, $userName, $email, $password ){
         $password = escape($_POST['password']);
         
 
-        if(email_exists($email)){
-            return false;
-        }else if(username_exists($userName)){
-            return false;
+        // if(email_exists($email)){
+        //     return false;
+        // }else if(username_exists($userName)){
+        //     return false;
+        // }
+        if(email_exists($email) || username_exists($userName)){
+        return false;
+        
         }else{
 
             // $password = md5($password);
@@ -176,24 +183,76 @@ function register_user($first_Name, $last_Name, $userName, $email, $password ){
             $password = md5($password);
             $validation = md5($userName . microtime());
 
-    $sql = "INSERT INTO users (first_Name, last_Name, userName, email, password, validation_code, active) ";
-    $sql.= "values ('{$first_Name}', '{$last_Name}', '{$userName}', '{$email}', '{$password}', '{$validation}', 0)";
-    $result = query($sql);
-    confirm($result);
+            $sql = "INSERT INTO users (first_Name, last_Name, userName, email, password, validation_code, active) ";
+            $sql.= "values ('{$first_Name}', '{$last_Name}', '{$userName}', '{$email}', '{$password}', '{$validation}', 0)";
+            $result = query($sql);
+            confirm($result);
 
+                return true;
+
+            $subject="Activate account";
+            $msg="please click the link to activate you account
+            http://localhost/login/activate.php?email=$email&code=$validation";
+            $header = "From: noreply@thiswebsite.com";
+
+            send_email($email, $subject, $msg, $header);
             return true;
 
         }
 }
 
+//======
+//====== ACTIVATE USER FUNCTIONS -----------------------------------------------
+//======
 
+function activate_user(){
+    if($_SERVER['REQUEST_METHOD'] == "GET"){
+
+        if(isset($_GET['email'])){
+
+           echo $email = clean($_GET['email']);
+
+           echo $validation = clean($_GET['code']);
+
+           $sql="SELECT id FROM users WHERE email = '".escape($_GET['email'])."' AND validation_code = '".escape($_GET['code'])."'  ";
+           $result = query($sql);
+           confirm($result);
+
+           if(row_count($result) == 1){
+
+            $sql2="UPDATE users SET active=1, validation_code=0 WHERE email = '".escape($email)."' AND validation_code = '".escape($validation)."' ";
+            $result2 = query($sql2);
+           confirm($result2);
+
+               set_message("<h5 class='alert-success text-center'>Your Account has been activated. Please Log in</h5>") ;
+               redirect("login.php");
+
+            }
+            else{
+                set_message("<h5 class='alert-danger text-center'>Your Account has not activated. Please Activate </h5>") ;
+               redirect("login.php");
+
+            }
+        }
+    }
+}
+
+//======
+//====== VALIDATE USER LOGIN FUNCTIONS -----------------------------------------
+//======
+
+function validate_user_login(){
+    $errors = [];
+    $min = 3;
+    $max = 20;
+
+    if($_SERVER['REQUEST_METHOD']=="POST"){
+
+    $email     = clean($_POST['email']);
+    $password  = clean($_POST['password']);
+    $remember  = clean($_POST['remember']);
+
+    }
+}
 
 ?>
-
-
-
-
-
-
-
-
